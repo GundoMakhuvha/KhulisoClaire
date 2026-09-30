@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Khuliso & Claise Wedding Invitation" },
+      { title: "Khuliso & Claire Wedding Invitation" },
       {
         name: "description",
         content:
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Khuliso & Claise Wedding Invitation" },
       {
         property: "og:description",
-        content: "Open the envelope: our story, the schedule, dress code and RSVP.",
+        content: "Developed By: Capvtal Innovations",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
