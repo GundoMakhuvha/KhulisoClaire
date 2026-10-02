@@ -500,7 +500,6 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
       <div class="note" data-soft><p id="venueAddr"></p></div>
       <div class="actions" data-soft>
         <a class="btn" id="gmapsLink" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
-        <a class="btn btn--ghost" id="amapsLink" href="#" target="_blank" rel="noopener">Open in Apple Maps</a>
       </div>
     </div>
   </section>
@@ -628,7 +627,6 @@ try {
   const mapQ = encodeURIComponent(E.ceremony.address || E.ceremony.venue);
   $("#venueAddr").textContent = E.ceremony.address || E.ceremony.venue;
   $("#gmapsLink").href = "https://www.google.com/maps/search/?api=1&query=" + mapQ;
-  $("#amapsLink").href = "https://maps.apple.com/?q=" + mapQ;
   if (/^0+$/.test(CONFIG.whatsapp.phone.replace(/^27/, ""))) $("#waLink").style.display = "none";
   else $("#waLink").href = "https://wa.me/" + CONFIG.whatsapp.phone + "?text=" + encodeURIComponent(CONFIG.whatsapp.message);
 } catch (err) { console.error(err); }
