@@ -481,8 +481,8 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
       <div class="cards">
         <div class="card" data-soft>
           <h3>The Ceremony</h3>
-          <p class="time" id="ceremonyTime">12:00</p>
-          <p id="ceremonyVenue">Johannesburg, Gauteng</p>
+          <p class="time" id="ceremonyTime">13:30</p>
+          <p id="ceremonyVenue">Muldersdrift, Gauteng</p>
           <p id="ceremonyAddr"></p>
           <p>Please arrive 30 minutes early so we can begin on time.</p>
         </div>
@@ -494,7 +494,18 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
     </div>
   </section>
 
-  <section id="dress">
+  <section id="venue">
+    <div class="wrap">
+      <div class="sec-head reveal-head"><p class="eyebrow">Find us</p><h2>The venue</h2></div>
+      <div class="note" data-soft><p id="venueAddr"></p></div>
+      <div class="actions" data-soft>
+        <a class="btn" id="gmapsLink" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+        <a class="btn btn--ghost" id="amapsLink" href="#" target="_blank" rel="noopener">Open in Apple Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="dress" class="alt">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">What to wear</p><h2>Dress code</h2></div>
       <div class="note" data-soft>
@@ -503,7 +514,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
     </div>
   </section>
 
-  <section id="registry" class="alt">
+  <section id="registry">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">With gratitude</p><h2>Your Presence Is Our Greatest Gift</h2></div>
       <div class="note" data-soft>
@@ -517,7 +528,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
     </div>
   </section>
 
-  <section id="rsvp">
+  <section id="rsvp" class="alt">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">Kindly reply</p><h2>RSVP</h2></div>
       <div class="deadline" data-soft>
@@ -554,11 +565,11 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
       </div>
     </div>
   </section>
-  <section id="invitation" class="alt">
+  <section id="invitation">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">Keep it close</p><h2>Your invitation</h2></div>
       <div data-soft>
-        <button class="inv" id="invOpen" type="button" aria-label="View the invitation full size"><img data-inv alt="Traditional wedding invitation for Khuliso and Claire, Saturday 28 November 2026, 12:00, Johannesburg, Gauteng" /></button>
+        <button class="inv" id="invOpen" type="button" aria-label="View the invitation full size"><img data-inv alt="Traditional wedding invitation for Khuliso and Claire, Saturday 28 November 2026, 13:30, Cnr Beyers Naude &amp; Oakfield Farm Rd, Muldersdrift" /></button>
         <p class="note" style="margin-top:18px">Tap the invitation to open it full size.</p>
       </div>
     </div>
@@ -582,10 +593,10 @@ const CONFIG = {
   event: {
     dateLabel: "Saturday, 28 November 2026",
     ceremony: {
-      start: "2026-11-28T12:00:00", end: "2026-11-28T14:00:00",
-      time: "12:00",
-      venue: "Johannesburg, Gauteng",
-      address: "",                       // TBC: exact venue address
+      start: "2026-11-28T13:30:00", end: "2026-11-28T15:30:00",
+      time: "13:30",
+      venue: "Muldersdrift, Gauteng",
+      address: "Cnr Beyers Naude & Oakfield Farm Rd, Muldersdrift, 1747",
     },
     timezone: "Africa/Johannesburg",
   },
@@ -614,6 +625,10 @@ try {
   $("#ceremonyTime").textContent = E.ceremony.time;
   $("#ceremonyVenue").textContent = E.ceremony.venue;
   $("#ceremonyAddr").textContent = E.ceremony.address;
+  const mapQ = encodeURIComponent(E.ceremony.address || E.ceremony.venue);
+  $("#venueAddr").textContent = E.ceremony.address || E.ceremony.venue;
+  $("#gmapsLink").href = "https://www.google.com/maps/search/?api=1&query=" + mapQ;
+  $("#amapsLink").href = "https://maps.apple.com/?q=" + mapQ;
   if (/^0+$/.test(CONFIG.whatsapp.phone.replace(/^27/, ""))) $("#waLink").style.display = "none";
   else $("#waLink").href = "https://wa.me/" + CONFIG.whatsapp.phone + "?text=" + encodeURIComponent(CONFIG.whatsapp.message);
 } catch (err) { console.error(err); }
@@ -733,7 +748,7 @@ $("#rsvpForm").addEventListener("submit", async (e) => {
 const icsStamp = (l) => l.replace(/[-:]/g, "").replace(/\.\d+/, "");
 $("#icsBtn").addEventListener("click", () => {
   const e = CONFIG.event.ceremony;
-  const loc = [e.venue, e.address].filter(Boolean).join(", ").replace(/,/g, "\\,");
+  const loc = (e.address || e.venue).replace(/,/g, "\\,");
   const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Wedding//Invitation//EN", "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
     "UID:" + Date.now() + "@wedding.invite", "DTSTAMP:" + icsStamp(new Date().toISOString().slice(0, 19)) + "Z",
     "DTSTART;TZID=" + CONFIG.event.timezone + ":" + icsStamp(e.start), "DTEND;TZID=" + CONFIG.event.timezone + ":" + icsStamp(e.end),
