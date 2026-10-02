@@ -705,7 +705,7 @@ let attending = true;
 document.querySelectorAll(".toggle button").forEach((b) => b.addEventListener("click", () => {
   attending = b.dataset.att === "yes";
   document.querySelectorAll(".toggle button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-  $("#guestField").style.display = attending ? "" : "none";
+  const gf = $("#guestField"); if (gf) gf.style.display = attending ? "" : "none";
 }));
 
 /* RSVP submit -> Supabase */
@@ -715,7 +715,8 @@ $("#rsvpForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   if (closed) return setStatus("RSVPs closed on 9 October. Please message the host.", "err");
   const name = $("#f-name").value.trim(), email = $("#f-email").value.trim(), message = $("#f-msg").value.trim();
-  const guests = attending ? Math.max(1, Math.min(10, parseInt($("#f-guests").value, 10) || 1)) : 0;
+  const gIn = $("#f-guests");
+  const guests = attending ? Math.max(1, Math.min(10, parseInt(gIn ? gIn.value : "1", 10) || 1)) : 0;
   if (!name || name.length > 100) return setStatus("Please enter your name (up to 100 characters).", "err");
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 255) return setStatus("Please enter a valid email address.", "err");
   if (message.length > 1000) return setStatus("Your message is too long (max 1000 characters).", "err");
