@@ -600,6 +600,7 @@ const CONFIG = {
     timezone: "Africa/Johannesburg",
   },
   rsvpDeadline: "2026-10-09T23:59:59+02:00",   // 9 October, end of day South Africa time
+  rsvpForceOpen: true,   // keep the form open after the deadline (set to false to close it again)
   whatsapp: { phone: "27000000000", message: "Hi! I'm reaching out about Khuliso & Claire's wedding." }, // TODO: real host number
   supabase: {
     url: "https://tatgnodhzscyghjzjwws.supabase.co",
@@ -688,14 +689,14 @@ let closed = false;
 (function () {
   const left = $("#deadlineLeft");
   const days = Math.ceil((deadline - Date.now()) / 864e5);
-  if (Date.now() > deadline) {
+  if (Date.now() > deadline && !CONFIG.rsvpForceOpen) {
     closed = true;
     left.textContent = "RSVPs are now closed. Please message the host.";
     document.querySelectorAll("#rsvpForm input,#rsvpForm textarea,#rsvpForm button").forEach((el) => (el.disabled = true));
     sticky.style.display = "none";
     const chip = $(".rsvp-chip"); if (chip) chip.style.display = "none";
   } else {
-    left.textContent = days <= 1 ? "Last day to reply" : days + " days left to reply";
+    left.textContent = days < 1 ? "Late replies are still welcome" : days === 1 ? "Last day to reply" : days + " days left to reply";
   }
 })();
 onScroll();
