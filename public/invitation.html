@@ -11,6 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://i.postimg.cc/9Mf5JyfV/New-Khuliso-Invite.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="/kc-logo.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -238,6 +239,117 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
 @media(max-width:760px){.sticky{display:flex}}
 @media(max-width:640px){.btn{width:100%}.actions{flex-direction:column}.toggle button{letter-spacing:.12em}}
 
+/* ================= K & C additions: logo, pill nav, programme, seating ================= */
+.kc-logo{display:block;color:var(--ink)}
+.hero__logo{width:clamp(118px,30vw,168px);height:auto;margin:0 auto 18px;color:var(--ink)}
+
+/* pill nav */
+.topnav{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:50%;z-index:45;translate:-50% -140%;
+  display:flex;align-items:center;gap:6px;max-width:calc(100vw - 20px);padding:5px 6px 5px 8px;border-radius:999px;
+  background:rgba(251,251,250,.86);border:1px solid rgba(22,22,22,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 14px 34px -20px rgba(0,0,0,.45);transition:translate .7s cubic-bezier(.2,.8,.2,1) .3s}
+body.is-open .topnav{translate:-50% 0}
+.topnav__brand{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;color:var(--ink);text-decoration:none}
+.topnav__brand svg{width:38px;height:38px}
+.topnav__links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.topnav__links::-webkit-scrollbar{display:none}
+.topnav__links a{flex:none;scroll-snap-align:center;padding:9px 14px;border-radius:999px;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;white-space:nowrap;transition:background .3s,color .3s}
+.topnav__links a:hover{background:rgba(22,22,22,.06)}
+.topnav__links a[aria-current="true"]{background:var(--ink);color:var(--sand)}
+.topnav .music{position:static;display:none;flex:none;min-height:38px;padding:0;width:38px;justify-content:center;border-radius:50%;
+  background:transparent;border:1px solid rgba(22,22,22,.16);backdrop-filter:none;-webkit-backdrop-filter:none;font-size:0;letter-spacing:0}
+body.is-open .topnav .music{display:inline-flex}
+.topnav .music svg{width:16px;height:16px}
+.topnav .music[aria-pressed="false"] .wave{opacity:0}
+.topnav .music[aria-pressed="false"] .mute{opacity:1}
+.topnav .music .mute{opacity:0}
+section[id]{scroll-margin-top:70px}
+
+/* on the day */
+.pills{display:flex;justify-content:center;gap:4px;width:max-content;max-width:100%;margin:0 auto clamp(28px,5vw,44px);padding:5px;border-radius:999px;
+  background:var(--paper);border:var(--line);box-shadow:0 16px 34px -26px rgba(0,0,0,.4);position:relative}
+.pills button{position:relative;z-index:1;min-height:44px;padding:10px clamp(14px,4vw,26px);border-radius:999px;border:0;background:transparent;cursor:pointer;
+  font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);transition:color .35s}
+.pills button[aria-selected="true"]{color:var(--sand)}
+.pills__glow{position:absolute;z-index:0;top:5px;bottom:5px;left:0;width:0;border-radius:999px;background:var(--ink);
+  transition:left .45s cubic-bezier(.3,.9,.3,1),width .45s cubic-bezier(.3,.9,.3,1)}
+.panel{animation:panelIn .6s cubic-bezier(.2,.8,.2,1)}
+.panel[hidden]{display:none}
+.panel{scroll-margin-top:190px}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* programme card, styled after the printed programme */
+.prog{position:relative;max-width:640px;margin:0 auto;padding:clamp(34px,7vw,60px) clamp(20px,6vw,56px) clamp(30px,6vw,50px);background:var(--paper);
+  border:var(--line);text-align:center;overflow:hidden}
+.prog::before{content:"";position:absolute;inset:10px;border:1px solid color-mix(in oklab,var(--gold) 22%,transparent);pointer-events:none}
+.prog__logo{width:clamp(110px,26vw,140px);height:auto;margin:0 auto 6px}
+.prog__title{font-family:var(--display);font-size:clamp(1.35rem,4.6vw,1.7rem);color:var(--ink);margin:4px 0 0}
+.prog__date{margin:6px 0 0;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.prog__part{margin:clamp(26px,5vw,36px) 0 6px;display:flex;align-items:center;gap:14px;font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink);font-weight:500}
+.prog__part::before,.prog__part::after{content:"";flex:1;height:1px;background:color-mix(in oklab,var(--gold) 35%,transparent)}
+.prog ol{list-style:none;margin:0;padding:0;text-align:left}
+.prog li{position:relative;display:grid;grid-template-columns:clamp(64px,16vw,84px) 1fr;gap:clamp(10px,3vw,22px);align-items:baseline;
+  padding:13px 10px;border-bottom:1px dashed color-mix(in oklab,var(--gold) 24%,transparent);border-radius:2px;transition:background .4s}
+.prog li:last-child{border-bottom:0}
+.prog time{font-weight:500;font-size:.82rem;letter-spacing:.14em;color:var(--ink);font-variant-numeric:tabular-nums}
+.prog li span{font-size:.78rem;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-soft);line-height:1.55}
+.prog li.is-now{background:var(--ink)}
+.prog li.is-now time,.prog li.is-now span{color:var(--sand)}
+.prog li.is-now span::after{content:"Happening now";display:block;margin-top:4px;font-size:.58rem;letter-spacing:.3em;opacity:.7}
+.prog li.is-past{opacity:.45}
+.prog__sprig{position:absolute;width:150px;height:150px;color:var(--ink);opacity:.14;pointer-events:none}
+.prog__sprig--a{top:-42px;left:-42px}
+.prog__sprig--b{bottom:-42px;right:-42px;transform:rotate(180deg)}
+
+/* seating */
+.seat-find{max-width:560px;margin:0 auto 26px;position:relative}
+.seat-find input{padding-left:46px;min-height:54px;border-radius:999px}
+.seat-find svg{position:absolute;left:18px;top:50%;translate:0 -50%;width:18px;height:18px;color:var(--muted);pointer-events:none}
+.seat-result{max-width:560px;margin:0 auto 30px;text-align:center;min-height:1.6em;color:var(--muted)}
+.seat-result strong{display:block;font-family:var(--display);font-weight:400;font-size:clamp(2rem,7vw,2.6rem);color:var(--ink);line-height:1.1}
+.seat-result em{font-style:normal;color:var(--ink)}
+.tables{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.tbl{background:var(--paper);border:var(--line);padding:22px 18px 20px;text-align:center;transition:transform .35s,box-shadow .35s,opacity .35s,border-color .35s}
+.tbl__ring{position:relative;width:92px;height:92px;margin:0 auto 14px}
+.tbl__ring b{position:absolute;inset:18px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--ink);font-family:var(--display);font-weight:400;font-size:1.5rem;color:var(--ink)}
+.tbl__ring i{position:absolute;width:9px;height:9px;border-radius:50%;border:1px solid var(--gold);left:calc(50% - 4.5px);top:calc(50% - 4.5px)}
+.tbl h3{font-size:1.35rem;color:var(--ink)}
+.tbl p{margin:2px 0 10px;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.tbl ul{list-style:none;margin:0;padding:0;font-size:.9rem;line-height:1.75;color:var(--ink-soft)}
+.tbl li mark{background:var(--ink);color:var(--sand);padding:1px 6px;border-radius:2px}
+.tables.is-filtering .tbl:not(.is-hit){opacity:.28}
+.tbl.is-hit{border-color:var(--ink);transform:translateY(-4px);box-shadow:0 26px 40px -28px rgba(0,0,0,.55)}
+.seat-empty{max-width:520px;margin:0 auto;text-align:center;padding:36px 26px;background:var(--paper);border:var(--line)}
+.seat-empty svg{width:88px;height:88px;margin:0 auto 10px;color:var(--ink)}
+.seat-empty h3{font-size:1.7rem;color:var(--ink)}
+.seat-empty p{color:var(--muted);margin:8px 0 0}
+
+.topnav__links a svg{display:none}
+/* phones: a floating tab bar at the bottom, music gets its own corner button */
+.music.is-float{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:46;width:42px;height:42px;min-height:0;padding:0;justify-content:center;
+  border-radius:50%;font-size:0;letter-spacing:0;background:rgba(251,251,250,.88);border:1px solid rgba(22,22,22,.14);box-shadow:0 10px 24px -16px rgba(0,0,0,.5)}
+.music.is-float svg{width:17px;height:17px}
+.music.is-float .mute{opacity:0}
+.music.is-float[aria-pressed="false"] .wave{opacity:0}
+.music.is-float[aria-pressed="false"] .mute{opacity:1}
+@media(max-width:760px){
+  .topnav{top:auto;bottom:calc(10px + var(--safe-b));left:10px;right:10px;max-width:none;translate:0 160%;padding:6px;border-radius:22px;
+    background:rgba(251,251,250,.92);box-shadow:0 18px 40px -18px rgba(0,0,0,.55)}
+  body.is-open .topnav{translate:0 0}
+  .topnav__brand{display:none}
+  .topnav__links{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;overflow:visible}
+  .topnav__links a{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 2px 7px;border-radius:16px;
+    font-size:.54rem;letter-spacing:.08em;min-height:52px;justify-content:center}
+  .topnav__links a svg{display:block;width:21px;height:21px}
+  .topnav__links a[aria-current="true"]{background:var(--ink);color:var(--sand)}
+  .sticky{display:none!important}
+  footer{padding-bottom:calc(60px + 90px + var(--safe-b))}
+  section[id]{scroll-margin-top:16px}
+}
+@media(max-width:360px){.topnav__links a{font-size:.48rem;letter-spacing:.06em}}
+@media print{.topnav,.music,.sticky,.ambient,.progress{display:none!important}}
+
 @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -292,7 +404,18 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
   </div>
 </div>
 
-<button class="music" id="musicBtn" type="button" aria-pressed="true">Music on</button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="kcLogo" viewBox="0 0 400 400"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M46.7 161.8 A158 158 0 0 1 353.3 161.8" stroke-width="2"/><path d="M353.3 238.2 A158 158 0 0 1 46.7 238.2" stroke-width="2"/><path d="M44.0 196.0 Q58.0 92.0 170.0 40.0 M51.0 164.1 Q75.4 167.4 87.7 142.2 Q60.4 142.3 51.0 164.1 Z M51.0 164.1 L73.7 150.5 M60.4 140.1 Q69.1 118.7 49.0 101.7 Q42.8 126.5 60.4 140.1 Z M60.4 140.1 L53.3 116.3 M73.0 117.8 Q92.6 126.7 109.2 108.7 Q86.4 102.0 73.0 117.8 Z M73.0 117.8 L95.5 112.2 M89.0 97.3 Q101.5 81.8 89.0 62.7 Q77.8 81.8 89.0 97.3 Z M89.0 97.3 L89.0 75.9 M108.4 78.6 Q122.4 90.5 140.3 79.5 Q123.0 68.7 108.4 78.6 Z M108.4 78.6 L128.1 79.2 M131.0 61.6 Q144.5 51.5 138.3 33.3 Q125.1 46.5 131.0 61.6 Z M131.0 61.6 L135.5 44.1 M170.0 40.0 Q185.2 42.4 195.9 28.0 Q178.4 27.6 170.0 40.0 Z M170.0 40.0 L186.0 32.6" stroke-width="1.5"/><path d="M356.0 204.0 Q342.0 308.0 230.0 360.0 M349.0 235.9 Q324.6 232.6 312.3 257.8 Q339.6 257.7 349.0 235.9 Z M349.0 235.9 L326.3 249.5 M339.6 259.9 Q330.9 281.3 351.0 298.3 Q357.2 273.5 339.6 259.9 Z M339.6 259.9 L346.7 283.7 M327.0 282.2 Q307.4 273.3 290.8 291.3 Q313.6 298.0 327.0 282.2 Z M327.0 282.2 L304.5 287.8 M311.0 302.7 Q298.5 318.2 311.0 337.3 Q322.2 318.2 311.0 302.7 Z M311.0 302.7 L311.0 324.1 M291.6 321.4 Q277.6 309.5 259.7 320.5 Q277.0 331.3 291.6 321.4 Z M291.6 321.4 L271.9 320.8 M269.0 338.4 Q255.5 348.5 261.7 366.7 Q274.9 353.5 269.0 338.4 Z M269.0 338.4 L264.5 355.9 M230.0 360.0 Q214.8 357.6 204.1 372.0 Q221.6 372.4 230.0 360.0 Z M230.0 360.0 L214.0 367.4" stroke-width="1.5"/><path d="M8.624 -7.938000000000001V-53.312000000000005Q8.624 -56.154 8.036000000000001 -57.575Q7.448 -58.996 5.635 -59.535000000000004Q3.822 -60.074000000000005 0.29400000000000004 -60.074000000000005Q0.09800000000000031 -60.074000000000005 0.09800000000000031 -60.662000000000006Q0.09800000000000031 -61.25 0.29400000000000004 -61.25Q2.646 -61.25 5.586 -61.103Q8.526 -60.956 11.76 -60.956Q15.288000000000002 -60.956 18.179000000000002 -61.103Q21.07 -61.25 23.323999999999998 -61.25Q23.618000000000002 -61.25 23.618000000000002 -60.662000000000006Q23.618000000000002 -60.074000000000005 23.323999999999998 -60.074000000000005Q19.796 -60.074000000000005 18.032 -59.486000000000004Q16.268 -58.898 15.631 -57.428000000000004Q14.994000000000002 -55.958000000000006 14.994000000000002 -53.116V-32.438L35.966 -53.312000000000005Q39.592 -57.036 39.053 -58.55500000000001Q38.514 -60.074000000000005 33.418 -60.074000000000005Q33.222 -60.074000000000005 33.222 -60.662000000000006Q33.222 -61.25 33.418 -61.25Q35.868 -61.25 38.318 -61.103Q40.768 -60.956 44.786 -60.956Q48.608 -60.956 50.861999999999995 -61.103Q53.116 -61.25 55.174 -61.25Q55.468 -61.25 55.468 -60.662000000000006Q55.468 -60.074000000000005 55.174 -60.074000000000005Q51.646 -60.074000000000005 47.04 -58.45700000000001Q42.434 -56.84 38.22 -52.724000000000004L22.736000000000004 -37.534L36.848 -19.502000000000002Q41.258 -13.72 44.345 -10.192Q47.432 -6.664000000000001 49.49 -4.753Q51.548 -2.842 53.165000000000006 -2.107Q54.782000000000004 -1.372 56.252 -1.274Q57.722 -1.1760000000000002 59.584 -1.1760000000000002Q59.878 -1.1760000000000002 59.878 -0.5880000000000001Q59.878 0.0 59.584 0.0H48.608Q47.726 0.0 47.187 0.049Q46.648 0.098 46.06 0.098Q44.688 0.098 43.855000000000004 -0.392Q43.022 -0.882 41.944 -2.352Q40.866 -3.822 38.857 -6.664Q36.848 -9.506 33.222 -14.21L18.228 -33.124L14.994000000000002 -29.988V-7.938000000000001Q14.994000000000002 -5.096 15.582 -3.6260000000000003Q16.17 -2.156 17.983 -1.6660000000000001Q19.796 -1.1760000000000002 23.323999999999998 -1.1760000000000002Q23.618000000000002 -1.1760000000000002 23.618000000000002 -0.5880000000000001Q23.618000000000002 0.0 23.323999999999998 0.0Q20.972 0.0 18.130000000000003 -0.098Q15.288000000000002 -0.196 11.76 -0.196Q8.526 -0.196 5.537 -0.098Q2.548 0.0 0.19600000000000017 0.0Q0.0 0.0 0.0 -0.5880000000000001Q0.0 -1.1760000000000002 0.19600000000000017 -1.1760000000000002Q3.724 -1.1760000000000002 5.586 -1.6660000000000001Q7.448 -2.156 8.036000000000001 -3.6260000000000003Q8.624 -5.096 8.624 -7.938000000000001Z M79.47800000000001 -13.426Q79.47800000000001 -17.934 81.63400000000001 -21.364Q83.79 -24.794 87.22 -27.636000000000003Q89.964 -29.988 93.00200000000001 -32.144Q91.434 -34.692 90.16 -37.142Q88.886 -39.984 88.102 -42.63Q87.318 -45.276 87.318 -47.726Q87.318 -52.038000000000004 89.376 -55.566Q91.434 -59.094 95.06 -61.201Q98.686 -63.308 103.58600000000001 -63.308Q106.232 -63.308 108.878 -62.475Q111.524 -61.642 113.28800000000001 -59.535000000000004Q115.052 -57.428000000000004 115.052 -53.606Q115.052 -49.392 112.94500000000001 -46.30500000000001Q110.83800000000001 -43.218 107.45700000000001 -40.621Q104.07600000000001 -38.024 100.352 -35.672000000000004Q99.56800000000001 -35.084 98.784 -34.594Q99.86200000000001 -32.83 101.136 -31.164Q104.958 -26.068 109.956 -21.266000000000002Q114.66 -16.66 119.85400000000001 -12.74Q120.932 -14.700000000000001 121.71600000000001 -16.954Q123.186 -21.266000000000002 123.186 -25.970000000000002Q123.186 -29.106 121.96100000000001 -31.066000000000003Q120.736 -33.026 116.22800000000001 -33.026Q115.934 -33.026 115.934 -33.614000000000004Q115.83600000000001 -34.006 116.03200000000001 -34.104Q116.13 -34.202 116.22800000000001 -34.202L136.71 -34.300000000000004Q137.102 -34.300000000000004 137.102 -33.712Q137.102 -33.124 136.71 -33.124Q133.28 -33.124 131.614 -32.487Q129.948 -31.85 129.262 -30.576Q128.57600000000002 -29.302 127.988 -27.342000000000002Q127.106 -24.01 125.587 -20.139000000000003Q124.06800000000001 -16.268 121.81400000000001 -12.544Q121.52000000000001 -12.054 121.226 -11.662Q126.91 -7.546 132.104 -4.9Q137.69 -1.96 141.512 -1.1760000000000002Q142.002 -1.078 141.904 -0.539Q141.806 0.0 141.512 0.0H130.928Q129.654 0.0 127.596 -0.784Q125.53800000000001 -1.568 122.40200000000002 -3.6260000000000003Q120.24600000000001 -4.9 117.50200000000001 -7.056Q116.816 -6.272 116.13 -5.684Q112.798 -2.548 108.241 -0.6859999999999999Q103.684 1.1760000000000002 97.706 1.1760000000000002Q91.434 1.1760000000000002 87.367 -0.931Q83.30000000000001 -3.0380000000000003 81.38900000000001 -6.4190000000000005Q79.47800000000001 -9.8 79.47800000000001 -13.426ZM93.786 -30.968Q93.59 -30.772000000000002 93.296 -30.576Q89.964 -27.832 87.857 -24.549Q85.75 -21.266000000000002 85.75 -16.856Q85.75 -12.74 87.857 -9.261Q89.964 -5.782 93.688 -3.773Q97.412 -1.764 102.116 -1.764Q106.72200000000001 -1.764 110.642 -3.822Q113.876 -5.390000000000001 116.32600000000001 -7.938000000000001Q115.444 -8.624 114.56200000000001 -9.408000000000001Q109.662 -13.328000000000001 104.958 -17.934Q100.254 -22.54 96.432 -27.538Q95.06 -29.204 93.786 -30.968ZM98.098 -35.672000000000004Q99.86200000000001 -37.044000000000004 101.626 -38.514Q104.958 -41.356 107.114 -44.59Q109.27000000000001 -47.824000000000005 109.27000000000001 -52.038000000000004Q109.27000000000001 -56.448 106.918 -58.849000000000004Q104.566 -61.25 100.744 -61.25Q97.02000000000001 -61.25 95.01100000000001 -58.996Q93.00200000000001 -56.742000000000004 93.00200000000001 -51.842Q93.00200000000001 -46.746 95.158 -41.552Q96.334 -38.612 98.098 -35.672000000000004Z M196.99633333333333 -62.328Q201.11233333333334 -62.328 204.29733333333334 -61.93600000000001Q207.48233333333334 -61.544000000000004 210.22633333333334 -60.711Q212.97033333333334 -59.878 215.81233333333333 -58.408Q216.49833333333333 -58.016000000000005 216.64533333333333 -57.771Q216.79233333333335 -57.526 216.89033333333333 -56.252L218.06633333333332 -44.59Q218.06633333333332 -44.394 217.5763333333333 -44.247Q217.08633333333333 -44.1 216.89033333333333 -44.492000000000004Q214.63633333333334 -52.626000000000005 209.68733333333336 -56.742000000000004Q204.73833333333334 -60.858000000000004 196.70233333333334 -60.858000000000004Q188.37233333333333 -60.858000000000004 182.14933333333335 -57.232Q175.92633333333333 -53.606 172.44733333333335 -46.942Q168.96833333333333 -40.278 168.96833333333333 -31.262Q168.96833333333333 -24.794 171.17333333333335 -19.159Q173.37833333333333 -13.524000000000001 177.29833333333335 -9.261000000000001Q181.21833333333333 -4.998 186.26533333333333 -2.646Q191.31233333333333 -0.29400000000000004 196.99633333333333 -0.29400000000000004Q205.13033333333334 -0.29400000000000004 210.12833333333333 -4.263000000000001Q215.12633333333332 -8.232000000000001 217.67433333333332 -16.17Q217.77233333333334 -16.464000000000002 218.31133333333332 -16.366Q218.85033333333334 -16.268 218.85033333333334 -16.072L217.87033333333335 -5.292Q217.77233333333334 -4.1160000000000005 217.57633333333334 -3.822Q217.38033333333334 -3.528 216.79233333333335 -3.136Q211.69633333333334 -0.5880000000000001 207.18833333333333 0.34299999999999997Q202.68033333333335 1.274 196.99633333333333 1.274Q186.60833333333335 1.274 178.62133333333333 -2.793Q170.63433333333333 -6.86 166.07733333333334 -14.161Q161.52033333333333 -21.462 161.52033333333333 -31.066000000000003Q161.52033333333333 -38.122 164.16633333333334 -43.855000000000004Q166.81233333333333 -49.588 171.61433333333332 -53.704Q176.41633333333334 -57.82 182.88433333333333 -60.074Q189.35233333333332 -62.328 196.99633333333333 -62.328Z" transform="translate(90.6 237.0)" fill="currentColor" stroke="none"/></g></symbol><symbol id="kcSprig" viewBox="0 0 400 400"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(80 120) scale(1.4)"><path d="M44.0 196.0 Q58.0 92.0 170.0 40.0 M51.0 164.1 Q75.4 167.4 87.7 142.2 Q60.4 142.3 51.0 164.1 Z M51.0 164.1 L73.7 150.5 M60.4 140.1 Q69.1 118.7 49.0 101.7 Q42.8 126.5 60.4 140.1 Z M60.4 140.1 L53.3 116.3 M73.0 117.8 Q92.6 126.7 109.2 108.7 Q86.4 102.0 73.0 117.8 Z M73.0 117.8 L95.5 112.2 M89.0 97.3 Q101.5 81.8 89.0 62.7 Q77.8 81.8 89.0 97.3 Z M89.0 97.3 L89.0 75.9 M108.4 78.6 Q122.4 90.5 140.3 79.5 Q123.0 68.7 108.4 78.6 Z M108.4 78.6 L128.1 79.2 M131.0 61.6 Q144.5 51.5 138.3 33.3 Q125.1 46.5 131.0 61.6 Z M131.0 61.6 L135.5 44.1 M170.0 40.0 Q185.2 42.4 195.9 28.0 Q178.4 27.6 170.0 40.0 Z M170.0 40.0 L186.0 32.6"/></g></symbol></svg>
+<nav class="topnav" id="topnav" aria-label="Sections">
+  <a class="topnav__brand" href="#top" aria-label="Back to the top"><svg class="kc-logo" aria-hidden="true"><use href="#kcLogo"/></svg></a>
+  <div class="topnav__links">
+    <a href="#story"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg><span>Story</span></a>
+    <a href="#programme" data-tab="programme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h10M9 12h10M9 18h10"/><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/></svg><span>Programme</span></a>
+    <a href="#seating" data-tab="seating"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="3.6" r="1.4"/><circle cx="12" cy="20.4" r="1.4"/><circle cx="3.6" cy="12" r="1.4"/><circle cx="20.4" cy="12" r="1.4"/></svg><span>Seating</span></a>
+    <a href="#details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg><span>Details</span></a>
+    <a href="#rsvp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1.5"/><path d="M4 7l8 6 8-6"/></svg><span>RSVP</span></a>
+  </div>
+  <button class="music" id="musicBtn" type="button" aria-pressed="true" aria-label="Music on, tap to mute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" fill="currentColor"/><path class="wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="mute" d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button>
+</nav>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Invitation, full size">
   <button class="lb__x" id="lbX" type="button" aria-label="Close">Close</button>
   <img data-inv alt="Wedding invitation, full size" />
@@ -319,7 +442,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
              [440,329.63,261.63,329.63,440,523.25,440,329.63],[440,349.23,261.63,349.23,440,523.25,440,349.23]];
   function syncBtn() {
     if (snd) { snd.textContent = soundOn ? "Sound on" : "Sound off"; snd.setAttribute("aria-pressed", String(soundOn)); }
-    if (mBtn) { mBtn.textContent = soundOn ? "Music on" : "Music off"; mBtn.setAttribute("aria-pressed", String(soundOn)); }
+    if (mBtn) { mBtn.setAttribute("aria-label", soundOn ? "Music on, tap to mute" : "Music off, tap to play"); mBtn.setAttribute("aria-pressed", String(soundOn)); }
   }
   function audio() {
     try {
@@ -443,13 +566,16 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
   if (snd) snd.addEventListener("click", function () { setSound(!soundOn); });
   if (mBtn) mBtn.addEventListener("click", function () { setSound(!soundOn); });
   window.__openInvitation = open;
+  if (/^#(programme|seating|day)$/i.test(location.hash)) {
+    gate.style.transition = "none"; leave();
+  }
 })();
 </script>
 
 <main>
-  <header class="hero">
+  <header class="hero" id="top">
     <div class="wrap">
-      
+      <svg class="kc-logo hero__logo" viewBox="0 0 400 400" data-enter="1" role="img" aria-label="K and C monogram"><use href="#kcLogo"/></svg>
       <h1 class="hero__names" data-enter="2"><span id="nameA">Khuliso</span><span class="hero__amp">&amp;</span><span id="nameB">Claire</span></h1>
       <p class="hero__line" data-enter="3">A celebration of two families, one beginning, and a promise to love each other for the rest of our lives.</p>
       <p class="hero__date" data-enter="3" id="heroDate">28 November 2026</p>
@@ -475,7 +601,35 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
     </div>
   </section>
 
-  <section id="details" class="alt">
+
+  <section id="day" class="alt">
+    <div class="wrap">
+      <div class="sec-head reveal-head"><p class="eyebrow">Saturday, 28 November</p><h2>On the day</h2></div>
+      <div class="pills" role="tablist" aria-label="On the day" data-soft>
+        <span class="pills__glow" aria-hidden="true"></span>
+        <button role="tab" id="tab-programme" aria-controls="programme" aria-selected="true" data-tab="programme">Programme</button>
+        <button role="tab" id="tab-seating" aria-controls="seating" aria-selected="false" data-tab="seating" tabindex="-1">Seating</button>
+      </div>
+
+      <div class="panel" id="programme" role="tabpanel" aria-labelledby="tab-programme">
+        <article class="prog" data-soft>
+          <svg class="prog__sprig prog__sprig--a" viewBox="0 0 400 400" aria-hidden="true"><use href="#kcSprig"/></svg>
+          <svg class="prog__sprig prog__sprig--b" viewBox="0 0 400 400" aria-hidden="true"><use href="#kcSprig"/></svg>
+          <svg class="kc-logo prog__logo" viewBox="0 0 400 400" role="img" aria-label="K and C monogram"><use href="#kcLogo"/></svg>
+          <h3 class="prog__title">Traditional Wedding Programme</h3>
+          <p class="prog__date" id="progDate">Saturday, 28 November 2026</p>
+          <div id="progList"></div>
+        </article>
+      </div>
+
+      <div class="panel" id="seating" role="tabpanel" aria-labelledby="tab-seating" hidden>
+        <div id="seatWrap"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="details">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">Traditional wedding</p><h2>Ceremony details</h2></div>
       <div class="cards">
@@ -494,7 +648,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
     </div>
   </section>
 
-  <section id="venue">
+  <section id="venue" class="alt">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">Find us</p><h2>The venue</h2></div>
       <div class="note" data-soft><p id="venueAddr"></p></div>
@@ -504,7 +658,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
     </div>
   </section>
 
-  <section id="dress" class="alt">
+  <section id="dress">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">What to wear</p><h2>Dress code</h2></div>
       <div class="note" data-soft>
@@ -513,7 +667,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
     </div>
   </section>
 
-  <section id="registry">
+  <section id="registry" class="alt">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">With gratitude</p><h2>Your Presence Is Our Greatest Gift</h2></div>
       <div class="note" data-soft>
@@ -527,7 +681,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
     </div>
   </section>
 
-  <section id="rsvp" class="alt">
+  <section id="rsvp">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">Kindly reply</p><h2>RSVP</h2></div>
       <div class="deadline" data-soft>
@@ -564,7 +718,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
       </div>
     </div>
   </section>
-  <section id="invitation">
+  <section id="invitation" class="alt">
     <div class="wrap">
       <div class="sec-head reveal-head"><p class="eyebrow">Keep it close</p><h2>Your invitation</h2></div>
       <div data-soft>
@@ -576,6 +730,7 @@ footer .credit a:hover{color:#fff;text-decoration-color:#fff}
 </main>
 
 <footer>
+  <svg class="kc-logo" viewBox="0 0 400 400" style="width:110px;height:auto;margin:0 auto 18px;color:var(--sand)" role="img" aria-label="K and C monogram"><use href="#kcLogo"/></svg>
   <p class="sign">With love, Khuliso &amp; Claire</p>
   <small id="footDate">28 November 2026</small>
   <small class="credit">Developed By: <a href="https://capvtal.com" target="_blank" rel="noopener">Capvtal Innovations</a></small>
@@ -601,6 +756,38 @@ const CONFIG = {
   },
   rsvpDeadline: "2026-10-09T23:59:59+02:00",   // 9 October, end of day South Africa time
   rsvpForceOpen: true,   // keep the form open after the deadline (set to false to close it again)
+  /* Traditional wedding programme (from the printed programme card). Times are 24h, South Africa time. */
+  programme: [
+    { part: "Part 1", items: [
+      ["14:00", "Programme starts"],
+      ["14:10", "Opening prayer & welcome"],
+      ["14:30", "Welcoming of the bride"],
+      ["14:40", "Words by bride's family"],
+      ["14:50", "Worship"],
+      ["15:00", "Word of blessings"],
+      ["15:20", "Entertainment / performance"],
+      ["15:40", "Speeches by cousins & friends"],
+      ["16:00", "Lunch"],
+    ]},
+    { part: "Part 2", items: [
+      ["16:50", "Grand entrance by bridal party"],
+      ["17:20", "Speeches by family & family friend"],
+      ["17:40", "Speech by bride's parents"],
+      ["18:00", "Speech by groom's parents"],
+      ["18:10", "Speech by siblings"],
+      ["18:40", "Khuliso & Claire"],
+      ["18:50", "Vote of thanks & closing prayer"],
+      ["19:00", "After party"],
+    ]},
+  ],
+  programmeEnd: "21:00",   // when the last item ("After party") stops showing as "happening now"
+
+  /* Table seating. TODO: fill in the real seating list. Guests can search their name to find their table.
+     Example:
+       { name: "Table 1", note: "Family", guests: ["Jane Doe", "John Doe"] },
+     While this list is empty the Seating tab shows a polite "coming soon" note. */
+  seating: [
+  ],
   whatsapp: { phone: "27000000000", message: "Hi! I'm reaching out about Khuliso & Claire's wedding." }, // TODO: real host number
   supabase: {
     url: "https://tatgnodhzscyghjzjwws.supabase.co",
@@ -789,6 +976,131 @@ $("#icsBtn").addEventListener("click", () => {
   }
   function restart() { clearInterval(timer); if (!reduced) timer = setInterval(() => show(i + 1), 5200); }
   show(0); restart();
+})();
+
+/* ================= On the day: pills, programme, seating ================= */
+(function () {
+  const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const day = CONFIG.event.ceremony.start.slice(0, 10);
+  const at = (hm) => new Date(day + "T" + hm + ":00+02:00").getTime();
+
+  /* programme */
+  const list = $("#progList");
+  if (list) {
+    list.innerHTML = CONFIG.programme.map((p) =>
+      '<p class="prog__part">' + esc(p.part) + "</p><ol>" +
+      p.items.map((it) => '<li data-t="' + esc(it[0]) + '"><time>' + esc(it[0]) + "</time><span>" + esc(it[1]) + "</span></li>").join("") +
+      "</ol>").join("");
+    $("#progDate").textContent = CONFIG.event.dateLabel;
+    const rows = [...list.querySelectorAll("li")];
+    const mark = () => {
+      const now = Date.now();
+      rows.forEach((li, i) => {
+        const s = at(li.dataset.t), e = rows[i + 1] ? at(rows[i + 1].dataset.t) : at(CONFIG.programmeEnd);
+        li.classList.toggle("is-now", now >= s && now < e);
+        li.classList.toggle("is-past", now >= e && now < at("23:59"));
+      });
+    };
+    mark(); setInterval(mark, 30000);
+  }
+
+  /* seating */
+  const wrap = $("#seatWrap");
+  if (wrap) {
+    const tables = (CONFIG.seating || []).filter((t) => t && t.name);
+    const ringSvg = '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="50" cy="50" r="20"/>' +
+      [0, 1, 2, 3, 4, 5, 6, 7].map((k) => { const a = k * Math.PI / 4; return '<circle cx="' + (50 + 36 * Math.cos(a)).toFixed(1) + '" cy="' + (50 + 36 * Math.sin(a)).toFixed(1) + '" r="6"/>'; }).join("") + "</svg>";
+    if (!tables.length) {
+      wrap.innerHTML = '<div class="seat-empty" data-soft>' + ringSvg + "<h3>Seating plan</h3><p>Your table will appear here soon. Our ushers will also gladly show you to your seat on the day.</p></div>";
+    } else {
+      const norm = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+      wrap.innerHTML =
+        '<div class="seat-find"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>' +
+        '<label class="sr" for="seatQ" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Find your table</label>' +
+        '<input id="seatQ" type="search" placeholder="Type your name to find your table" autocomplete="off" /></div>' +
+        '<p class="seat-result" id="seatResult" aria-live="polite">' + tables.length + " tables</p>" +
+        '<div class="tables" id="tables">' + tables.map((t, i) => {
+          const dots = (t.guests || []).map((_, k, a) => { const ang = k / a.length * 2 * Math.PI - Math.PI / 2; return '<i style="transform:translate(' + (40 * Math.cos(ang)).toFixed(1) + "px," + (40 * Math.sin(ang)).toFixed(1) + 'px)"></i>'; }).join("");
+          const num = (t.name.match(/\d+/) || [i + 1])[0];
+          return '<article class="tbl" data-i="' + i + '"><div class="tbl__ring">' + dots + "<b>" + esc(num) + "</b></div><h3>" + esc(t.name) + "</h3><p>" +
+            esc(t.note || (t.guests || []).length + " guests") + "</p><ul>" + (t.guests || []).map((g) => "<li>" + esc(g) + "</li>").join("") + "</ul></article>";
+        }).join("") + "</div>";
+      const q = $("#seatQ"), res = $("#seatResult"), box = $("#tables"), cards = [...box.children];
+      q.addEventListener("input", () => {
+        const v = norm(q.value);
+        cards.forEach((c) => { c.classList.remove("is-hit"); c.querySelectorAll("li").forEach((li) => (li.innerHTML = esc(li.textContent))); });
+        if (v.length < 2) { box.classList.remove("is-filtering"); res.textContent = tables.length + " tables"; return; }
+        const hits = [];
+        tables.forEach((t, i) => (t.guests || []).forEach((g, k) => {
+          if (v.split(/\s+/).every((w) => norm(g).includes(w))) {
+            hits.push([t, g]); cards[i].classList.add("is-hit");
+            const li = cards[i].querySelectorAll("li")[k]; li.innerHTML = "<mark>" + esc(g) + "</mark>";
+          }
+        }));
+        box.classList.add("is-filtering");
+        if (!hits.length) res.innerHTML = "We couldn't find that name. Please ask an usher, they'll gladly help.";
+        else if (hits.length === 1) {
+          res.innerHTML = "<strong>" + esc(hits[0][0].name) + "</strong>Welcome, <em>" + esc(hits[0][1]) + "</em>";
+          box.querySelector(".is-hit").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "nearest" });
+        } else res.innerHTML = hits.slice(0, 6).map((h) => "<em>" + esc(h[1]) + "</em>: " + esc(h[0].name)).join("<br>");
+      });
+    }
+    wrap.querySelectorAll("[data-soft]").forEach((el) => el.classList.add("is-in"));
+  }
+
+  /* pills */
+  const tabs = [...document.querySelectorAll('.pills [role="tab"]')], glow = $(".pills__glow");
+  const moveGlow = () => { const t = tabs.find((b) => b.getAttribute("aria-selected") === "true"); if (t && glow) { glow.style.left = t.offsetLeft + "px"; glow.style.width = t.offsetWidth + "px"; } };
+  function select(name, focus) {
+    tabs.forEach((b) => {
+      const on = b.dataset.tab === name;
+      b.setAttribute("aria-selected", String(on)); b.tabIndex = on ? 0 : -1;
+      document.getElementById(b.getAttribute("aria-controls")).hidden = !on;
+      if (on && focus) b.focus();
+    });
+    moveGlow();
+  }
+  tabs.forEach((b, i) => {
+    b.addEventListener("click", () => { select(b.dataset.tab); history.replaceState(null, "", "#" + b.dataset.tab); });
+    b.addEventListener("keydown", (e) => {
+      const k = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (!k) return;
+      e.preventDefault(); const nb = tabs[(i + k + tabs.length) % tabs.length]; select(nb.dataset.tab, true);
+    });
+  });
+  addEventListener("resize", moveGlow); document.fonts && document.fonts.ready.then(moveGlow); setTimeout(moveGlow, 400);
+  const goTab = (name) => { select(name); $("#day").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" }); };
+  document.querySelectorAll("[data-tab]").forEach((a) => {
+    if (a.tagName !== "A") return;
+    a.addEventListener("click", (e) => { e.preventDefault(); goTab(a.dataset.tab); history.replaceState(null, "", "#" + a.dataset.tab); });
+  });
+  const h = location.hash.slice(1).toLowerCase();
+  if (["programme", "seating"].includes(h)) { select(h); requestAnimationFrame(() => $("#day").scrollIntoView({ block: "start" })); }
+  /* guests arriving from a direct link, or anyone on the day itself, don't need the RSVP reminder bar */
+  if (["programme", "seating", "day"].includes(h) || Date.now() >= at("00:00")) { const st = $("#sticky"); if (st) st.style.display = "none"; }
+
+  /* phones: music button floats in the top corner, back inside the nav on bigger screens */
+  (function () {
+    const mb = $("#musicBtn"), nav = $("#topnav"), mq = matchMedia("(max-width:760px)");
+    if (!mb || !nav) return;
+    const place = () => { if (mq.matches) { mb.classList.add("is-float"); document.body.appendChild(mb); } else { mb.classList.remove("is-float"); nav.appendChild(mb); } };
+    place(); mq.addEventListener ? mq.addEventListener("change", place) : mq.addListener(place);
+  })();
+
+  /* nav highlight follows the section in view */
+  const links = [...document.querySelectorAll(".topnav__links a")];
+  const secs = ["story", "day", "details", "rsvp"].map((id) => document.getElementById(id)).filter(Boolean);
+  const spy = new IntersectionObserver((es) => es.forEach((en) => {
+    if (!en.isIntersecting) return;
+    const id = en.target.id;
+    const cur = id === "day" ? (tabs.find((b) => b.getAttribute("aria-selected") === "true") || {}).dataset?.tab : id;
+    links.forEach((l) => {
+      const on = (l.dataset.tab || l.getAttribute("href").slice(1)) === cur;
+      l.setAttribute("aria-current", String(on));
+      if (on) { const c = l.parentNode; c.scrollTo({ left: l.offsetLeft - (c.clientWidth - l.offsetWidth) / 2, behavior: reduced ? "auto" : "smooth" }); }
+    });
+  }), { rootMargin: "-45% 0px -50% 0px" });
+  secs.forEach((s) => spy.observe(s));
+  tabs.forEach((b) => b.addEventListener("click", () => links.forEach((l) => l.setAttribute("aria-current", String(l.dataset.tab === b.dataset.tab)))));
 })();
 </script>
 </body>
