@@ -318,7 +318,7 @@ section[id]{scroll-margin-top:70px}
 .tbl p{margin:2px 0 10px;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
 .tbl ul{list-style:none;margin:0;padding:0;font-size:.9rem;line-height:1.75;color:var(--ink-soft)}
 .tbl li mark{background:var(--ink);color:var(--sand);padding:1px 6px;border-radius:2px}
-.tables.is-filtering .tbl:not(.is-hit){opacity:.28}
+.tables.is-filtering .tbl:not(.is-hit){display:none}
 .tbl.is-hit{border-color:var(--ink);transform:translateY(-4px);box-shadow:0 26px 40px -28px rgba(0,0,0,.55)}
 .seat-empty{max-width:520px;margin:0 auto;text-align:center;padding:36px 26px;background:var(--paper);border:var(--line)}
 .seat-empty svg{width:88px;height:88px;margin:0 auto 10px;color:var(--ink)}
@@ -349,6 +349,24 @@ section[id]{scroll-margin-top:70px}
 }
 @media(max-width:360px){.topnav__links a{font-size:.48rem;letter-spacing:.06em}}
 @media print{.topnav,.music,.sticky,.ambient,.progress{display:none!important}}
+
+/* ================= finishing touches ================= */
+::selection{background:var(--ink);color:var(--sand)}
+html{scrollbar-width:thin;scrollbar-color:rgba(22,22,22,.28) transparent}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:rgba(22,22,22,.24);border-radius:8px}::-webkit-scrollbar-track{background:transparent}
+:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.sec-head h2::after{width:140px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 140 18%22 fill=%22none%22 stroke=%22%236b6b6b%22 stroke-width=%221%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M2 9H52M88 9H138%22/%3E%3Cpath d=%22M58 9C62 4 66 4 70 9C66 14 62 14 58 9Z%22/%3E%3Cpath d=%22M82 9C78 4 74 4 70 9C74 14 78 14 82 9Z%22/%3E%3Cpath d=%22M70 9C68 5 69 2 70 1C71 2 72 5 70 9Z%22 fill=%22%236b6b6b%22/%3E%3Ccircle cx=%2270%22 cy=%2213.5%22 r=%221%22 fill=%22%236b6b6b%22 stroke=%22none%22/%3E%3C/svg%3E") no-repeat center/contain}
+.alt{position:relative;overflow:hidden}
+.alt>.wrap{position:relative;z-index:1}
+.alt::before,.alt::after{content:"";position:absolute;width:clamp(150px,24vw,280px);aspect-ratio:1;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Cg stroke=%22%23161616%22 stroke-width=%221.1%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6.00 196.00 Q14.00 60.00 150.00 10.00%22 fill=%22none%22/%3E%3Cpath d=%22M9.76 164.60 Q28.41 164.33 34.75 144.02 Q14.34 147.24 9.76 164.60 Z%22 fill=%22%23d8d8d4%22/%3E%3Cpath d=%22M9.76 164.60 L27.25 150.20%22 fill=%22none%22/%3E%3Cpath d=%22M15.08 142.41 Q17.36 124.62 -1.13 115.84 Q-0.82 135.70 15.08 142.41 Z%22 fill=%22none%22/%3E%3Cpath d=%22M15.08 142.41 L3.74 123.81%22 fill=%22none%22/%3E%3Cpath d=%22M22.53 121.65 Q39.51 124.53 48.66 107.14 Q29.58 106.65 22.53 121.65 Z%22 fill=%22%23c9c9c4%22/%3E%3Cpath d=%22M22.53 121.65 L40.82 111.49%22 fill=%22none%22/%3E%3Cpath d=%22M32.10 102.32 Q41.75 88.93 30.66 73.70 Q22.18 89.91 32.10 102.32 Z%22 fill=%22%23d8d8d4%22/%3E%3Cpath d=%22M32.10 102.32 L31.09 82.29%22 fill=%22none%22/%3E%3Cpath d=%22M43.79 84.41 Q57.58 92.12 70.83 79.91 Q54.50 73.62 43.79 84.41 Z%22 fill=%22none%22/%3E%3Cpath d=%22M43.79 84.41 L62.72 81.26%22 fill=%22none%22/%3E%3Cpath d=%22M57.61 67.94 Q66.40 55.68 56.23 41.80 Q48.52 56.63 57.61 67.94 Z%22 fill=%22%23c9c9c4%22/%3E%3Cpath d=%22M57.61 67.94 L56.64 49.64%22 fill=%22none%22/%3E%3Cpath d=%22M73.56 52.89 Q85.61 60.70 98.36 50.40 Q83.91 43.73 73.56 52.89 Z%22 fill=%22%23d8d8d4%22/%3E%3Cpath d=%22M73.56 52.89 L90.92 51.15%22 fill=%22none%22/%3E%3Cpath d=%22M91.63 39.27 Q103.40 32.36 100.09 17.14 Q88.27 26.57 91.63 39.27 Z%22 fill=%22none%22/%3E%3Cpath d=%22M91.63 39.27 L97.55 23.78%22 fill=%22none%22/%3E%3Cpath d=%22M111.82 27.07 Q118.84 37.95 133.11 34.20 Q123.71 23.38 111.82 27.07 Z%22 fill=%22%23c9c9c4%22/%3E%3Cpath d=%22M111.82 27.07 L126.73 32.06%22 fill=%22none%22/%3E%3Cpath d=%22M150.00 10.00 Q161.15 13.73 169.15 2.96 Q156.34 0.63 150.00 10.00 Z%22 fill=%22%23d8d8d4%22/%3E%3Cpath d=%22M150.00 10.00 L163.40 5.07%22 fill=%22none%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;opacity:.07;pointer-events:none}
+.alt::before{top:-6px;left:-6px}
+.alt::after{bottom:-6px;right:-6px;transform:rotate(180deg)}
+.card{position:relative;overflow:hidden}
+.card::before,.card::after{content:"";position:absolute;width:74px;height:74px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Cg stroke=%22%23161616%22 stroke-width=%221.1%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6.00 196.00 Q14.00 60.00 150.00 10.00%22 fill=%22none%22/%3E%3Cpath d=%22M9.76 164.60 Q28.41 164.33 34.75 144.02 Q14.34 147.24 9.76 164.60 Z%22 fill=%22%23d8d8d4%22/%3E%3Cpath d=%22M9.76 164.60 L27.25 150.20%22 fill=%22none%22/%3E%3Cpath d=%22M15.08 142.41 Q17.36 124.62 -1.13 115.84 Q-0.82 135.70 15.08 142.41 Z%22 fill=%22none%22/%3E%3Cpath d=%22M15.08 142.41 L3.74 123.81%22 fill=%22none%22/%3E%3Cpath d=%22M22.53 121.65 Q39.51 124.53 48.66 107.14 Q29.58 106.65 22.53 121.65 Z%22 fill=%22%23c9c9c4%22/%3E%3Cpath d=%22M22.53 121.65 L40.82 111.49%22 fill=%22none%22/%3E%3Cpath d=%22M32.10 102.32 Q41.75 88.93 30.66 73.70 Q22.18 89.91 32.10 102.32 Z%22 fill=%22%23d8d8d4%22/%3E%3Cpath d=%22M32.10 102.32 L31.09 82.29%22 fill=%22none%22/%3E%3Cpath d=%22M43.79 84.41 Q57.58 92.12 70.83 79.91 Q54.50 73.62 43.79 84.41 Z%22 fill=%22none%22/%3E%3Cpath d=%22M43.79 84.41 L62.72 81.26%22 fill=%22none%22/%3E%3Cpath d=%22M57.61 67.94 Q66.40 55.68 56.23 41.80 Q48.52 56.63 57.61 67.94 Z%22 fill=%22%23c9c9c4%22/%3E%3Cpath d=%22M57.61 67.94 L56.64 49.64%22 fill=%22none%22/%3E%3Cpath d=%22M73.56 52.89 Q85.61 60.70 98.36 50.40 Q83.91 43.73 73.56 52.89 Z%22 fill=%22%23d8d8d4%22/%3E%3Cpath d=%22M73.56 52.89 L90.92 51.15%22 fill=%22none%22/%3E%3Cpath d=%22M91.63 39.27 Q103.40 32.36 100.09 17.14 Q88.27 26.57 91.63 39.27 Z%22 fill=%22none%22/%3E%3Cpath d=%22M91.63 39.27 L97.55 23.78%22 fill=%22none%22/%3E%3Cpath d=%22M111.82 27.07 Q118.84 37.95 133.11 34.20 Q123.71 23.38 111.82 27.07 Z%22 fill=%22%23c9c9c4%22/%3E%3Cpath d=%22M111.82 27.07 L126.73 32.06%22 fill=%22none%22/%3E%3Cpath d=%22M150.00 10.00 Q161.15 13.73 169.15 2.96 Q156.34 0.63 150.00 10.00 Z%22 fill=%22%23d8d8d4%22/%3E%3Cpath d=%22M150.00 10.00 L163.40 5.07%22 fill=%22none%22/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;opacity:.13;pointer-events:none}
+.card::before{top:-4px;left:-4px}
+.card::after{bottom:-4px;right:-4px;transform:rotate(180deg)}
+.count-msg{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,5vw,1.9rem);color:var(--ink);margin:0}
+.seat-result small{display:block;margin-top:6px;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
 
 @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
 </style>
@@ -787,6 +805,23 @@ const CONFIG = {
        { name: "Table 1", note: "Family", guests: ["Jane Doe", "John Doe"] },
      While this list is empty the Seating tab shows a polite "coming soon" note. */
   seating: [
+    { name: "Table 1", guests: ["Thatanswa Siala", "Thabelo Siala", "Janice & Don", "Mauren & William", "Zimkhitha Mangxola", "Joyce Netshiomvani", "Fhatuwani Ravhura", "Flora Ravhura", "Jeminah Phaswana"] },
+    { name: "Table 2", guests: ["Bongiwe & Lungile Mbunge", "Pamela & Liyema", "Feziwe Mangxola & Reetha", "Mlami & Nombulelo", "Ncumisa & Khaya Mangxola"] },
+    { name: "Table 3", guests: ["Ndiamba Nemaorani Nemaorani", "Livhuwani Mphephu", "Edzisani Nemavhola & Mbekanyeni Nemavhola", "Rabelani Mululuma & Mr Oscar Mululuma", "Mboneni & Livhuwani Munzhedzi", "Mbengeni Mulaudzi & Takalani Nengome"] },
+    { name: "Table 4", guests: ["Duvha Siala", "Tshamano Siala", "Murendi Nemavhola", "Rotshila Nemavhola", "Ndivho Nemaorani", "Funanani Nemaorani", "Vhutali Siala", "Lutendo Siala", "Mpho Nemaorani", "Orifha Munzhedzi"] },
+    { name: "Table 5", guests: ["Zanele and Mothopi", "Mpho & Oscar Dube", "Jack & Trice Mazwi", "Thakhani & Fezeka Makhuvha", "Jackie & Phomolo"] },
+    { name: "Table 6", guests: ["Sis Grace & Professor Lukhele", "Ndileka & Jason Jabu Tshabalala", "Dineo & Dan", "Vicky & Thapelo Tshephe", "Unathi & Siganeko"] },
+    { name: "Table 7", guests: ["Nontobeko", "Akhona", "Hlengiwe", "Nteseng", "Mauren & Ntokozo", "Mpho & Maanda", "Dikomo & Partner"] },
+    { name: "Table 8", guests: ["Eunice", "Beauty", "Robert", "Cebo", "Phumela", "Zoleka Jack", "Luphawa", "Okuhle", "Zoleka (3rd child)"] },
+    { name: "Table 9", guests: ["Jennifer Matsila", "Pfarelo and Mabel Ravhura", "Rofhiwa Netshiomvani", "Darrel Ramanyimi", "Robert Liphosa", "Phetani Netsiomvani", "Mashudu Netshiomvani", "Takalani Netshiombani"] },
+    { name: "Table 10", guests: ["Hlogi & Lisa Roome", "Khumbi", "Aya Mzamane", "Tadiwa", "Thato", "Nomfundo", "Lwazi", "Gundo", "Christopher"] },
+    { name: "Table 11", guests: ["Muofhe Siala", "Mpho Nenzhelele", "Mukovhe Munzhedzi", "Wamashudu Munzhedzi", "Sandra Phophi", "Jabu Msibi", "Mpho Munzhedzi", "Masego Munzhedzi", "Lorato Maposse", "Likomo Makume"] },
+    { name: "Table 12", guests: ["Tshisikhawe Makungo", "Tshedza Munzhedzi", "Sam Lalamani", "Ndivhuwo Munzhedzi", "Simba Thendo", "Koni Siala", "Avhatakali and Morongwa Munzhedzi"] },
+    { name: "Table 13", guests: ["Mpho Sandra Mululuma", "Pfunzo Siala", "Thembu Siala", "Adivhaho Nemavhola", "Vhukhudo", "Tshilidzi Nemavhola", "Mukundu Nemaorani", "Murunwa", "Funanani Muambadzi", "Mbofho Siala"] },
+    { name: "Table 14", guests: ["Andani", "Soso and Bubu", "Taylor", "Davis", "Rendani", "Muandisi", "Mbofho Mbodi", "Eddy and Phophi Phaswana"] },
+    { name: "Table 15", guests: ["Tshisampiri Mphephu", "Mashudu Mphephu", "Queen Siala", "Vhahangwele Siala", "Fhathuwani Munzhedzi", "Flora Munzhedzi", "Hulisani Siala"] },
+    { name: "Table 16", guests: ["Tumi and Leon Mundele", "Unathi and Siki Mzamane", "Moses and Michelle Sibiya"] },
+    { name: "Table 17", guests: ["Nondumiso Mpuhlu", "Nontobeko Mdhuli", "Wendy", "Phumela Nyikala", "Pumla Mofokeng", "Nkuli Mkhize", "Sibusiso Mkhize", "Yamombo Mkhize", "Onela"] },
   ],
   whatsapp: { phone: "27000000000", message: "Hi! I'm reaching out about Khuliso & Claire's wedding." }, // TODO: real host number
   supabase: {
@@ -845,11 +880,14 @@ try {
   const target = new Date(CONFIG.event.ceremony.start + "+02:00").getTime();
   function tick() {
     const d = target - Date.now();
-    if (d <= 0) { box.innerHTML = ""; return; }
+    if (d <= 0) { box.innerHTML = new Date(Date.now() + 2 * 36e5).toISOString().slice(0, 10) === CONFIG.event.ceremony.start.slice(0, 10) ? '<p class="count-msg">Today, we celebrate</p>' : '<p class="count-msg">Thank you for celebrating with us</p>'; return; }
     const days = Math.floor(d / 864e5), h = Math.floor(d / 36e5) % 24, m = Math.floor(d / 6e4) % 60;
     box.innerHTML = [[days, "Days"], [h, "Hours"], [m, "Minutes"]].map(x => "<div><b>" + x[0] + "</b><small>" + x[1] + "</small></div>").join("");
   }
   tick(); setInterval(tick, 30000);
+  const chip = $(".rsvp-chip"), day = CONFIG.event.ceremony.start.slice(0, 10);
+  const today = new Date(Date.now() + 2 * 36e5).toISOString().slice(0, 10);
+  if (chip && today >= day) { chip.textContent = today === day ? "View today's programme" : "View the programme"; chip.setAttribute("href", "#programme"); chip.dataset.tab = "programme"; }
 })();
 
 /* scroll reveals */
@@ -1023,7 +1061,7 @@ $("#icsBtn").addEventListener("click", () => {
           const dots = (t.guests || []).map((_, k, a) => { const ang = k / a.length * 2 * Math.PI - Math.PI / 2; return '<i style="transform:translate(' + (40 * Math.cos(ang)).toFixed(1) + "px," + (40 * Math.sin(ang)).toFixed(1) + 'px)"></i>'; }).join("");
           const num = (t.name.match(/\d+/) || [i + 1])[0];
           return '<article class="tbl" data-i="' + i + '"><div class="tbl__ring">' + dots + "<b>" + esc(num) + "</b></div><h3>" + esc(t.name) + "</h3><p>" +
-            esc(t.note || (t.guests || []).length + " guests") + "</p><ul>" + (t.guests || []).map((g) => "<li>" + esc(g) + "</li>").join("") + "</ul></article>";
+            esc(t.note || (t.guests || []).reduce((n, g) => n + g.split(/\s*(?:&|\band\b)\s*/i).filter(Boolean).length, 0) + " guests") + "</p><ul>" + (t.guests || []).map((g) => "<li>" + esc(g) + "</li>").join("") + "</ul></article>";
         }).join("") + "</div>";
       const q = $("#seatQ"), res = $("#seatResult"), box = $("#tables"), cards = [...box.children];
       q.addEventListener("input", () => {
@@ -1040,8 +1078,8 @@ $("#icsBtn").addEventListener("click", () => {
         box.classList.add("is-filtering");
         if (!hits.length) res.innerHTML = "We couldn't find that name. Please ask an usher, they'll gladly help.";
         else if (hits.length === 1) {
-          res.innerHTML = "<strong>" + esc(hits[0][0].name) + "</strong>Welcome, <em>" + esc(hits[0][1]) + "</em>";
-          box.querySelector(".is-hit").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "nearest" });
+          res.innerHTML = "<strong>" + esc(hits[0][0].name) + "</strong>Welcome, <em>" + esc(hits[0][1]) + "</em><small>Enjoy the celebration</small>";
+          
         } else res.innerHTML = hits.slice(0, 6).map((h) => "<em>" + esc(h[1]) + "</em>: " + esc(h[0].name)).join("<br>");
       });
     }
